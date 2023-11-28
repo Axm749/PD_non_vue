@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Программа по проектной деятельности</title>
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+     <form class="row g-3 needs-validation"  novalidate>
+     <div class="container">
+      <h2>СХД</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="users" class="form-label text-start">Количество устройств</label>
+                    <input type="number" class="form-control" id="users" value="" required>
+                </div>
+                <div class="col-md-4 text-start">
+                    <label for="days class="form-label">Дни хранения</label>
+                     <input type="number" class="form-control" id="days" aria-describedby="inputGroupPrepend" required value="">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 text-start">
+                 <input class="form-check-input" type="checkbox" value="" id="standart" required>
+                 <label class="form-check-label" for="invalidCheck">
+                 Узел не стандартный?
+                 </label>
+                </div>
+                <div class="col-md-4 text-start">
+                     <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="konverg" required>
+                      <label class="form-check-label" for="invalidCheck">
+                      Система гиперконвергентна?
+                      </label>
+                     </div>
+                </div>
+            </div>
+         <div class="row" id="stan">
+             <div class="col-md-4 text-start">
+                <label for="volume" class="form-label">Объём диска (Тбайт)</label>
+                <input type="number" class="form-control" id="volume" aria-describedby="inputGroupPrepend" required value="">
+             </div>
+             <div class="col-md-4">
+                <label for="discs" class="form-label">Количество дисков</label>
+                <input type="number" class="form-control" id="discs" aria-describedby="inputGroupPrepend" required value="">
+            </div>
+         </div>
+            <div class="row">
+            <div class="col-md-3 text-start">
+           <label for="choose_param" class="form-label">Выберите режим</label>
+           <select class="form-select" id="choose_param" required name="parameters">
+             <option selected disabled value="">...</option>
+             <option value="Users">Пользовательские сети</option>
+             <option value="Phones">Системы телефонии</option>
+             <option value="Cams">Система видеонаблюдения</option>
+             <option value="Myself">Свой режим</option>
+           </select>
+            </div>
+            <div id ="mBR_visible">
+              <div class="col-md-3 text-start">
+               <label for="mBR" class="form-label">Мбит/сек</label>
+               <input
+               class="form-control"
+               type="number"
+               id="mBR"
+               name="other"
+               aria-label="Other interest" 
+               value=""/>
+              </div>
+            </div>
+          </div>
+         <div class="col-12 text-start">
+           <input class="btn btn-outline-primary" type="button" id="start" value="Старт">
+             </div>
+         </div>
+        <div class="container">
+         <div id="result1" class="output">
+          <p> <strong> Вывод для раздела СХД </strong></p>
+         </div>
+        </div>
+    </form>
+  <form class="row g-3 needs-validation"  novalidate>
+    <div class="container" >
+      <h2>Электропитание</h2>
+      <div class="row g-3 needs-validation" novalidate>
+        <div class="col-md-4">
+          <label for="voultage" class="form-label">Напряжение аккумуляторных батарей (В)</label>
+          <input type="number" class="form-control" id="voultage"required>
+        </div>
+        <div class="col-md-4">
+          <label for="capacity" class="form-label">Емкость аккумуляторной батареи (А/ч)</label>
+          <input type="number" class="form-control" id="capacity" required>
+        </div>
+        <div class="col-md-4">
+          <label for="batteries" class="form-label">Количество аккумуляторных батарей в цепи (шт)</label>
+          <input type="number" class="form-control" id="batteries" required>
+        </div>
+        <div class="col-md-4">
+          <label for="kpd" class="form-label">КПД преобразователя в долях</label>
+          <input type="number" class="form-control" id="kpd" required>
+        </div>
+        <div class="col-md-4">
+          <label for="power" class="form-label">Максимальная суммарная мощность нагрузок (Вт)</label>
+          <input type="number" class="form-control" id="power" required>
+        </div>
+          <div class="col-md-4 text-start">
+           <input class="form-check-input" type="checkbox" value="" id="inp" required>
+           <label class="form-check-label" for="invalidCheck">
+           Ввести вручную?
+           </label>
+        </div>
+        <div class="col-12 text-start">
+          <input class="btn btn-outline-primary" type="button" id="start2" value="Старт">
+            </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="output"id="cont2">
+        <p> <strong> Вывод для раздела электропитания </strong></p>
+      </div>
+      </div>
+      
+    </div>
+      </form>
+
+
+
+      
+      <script src="JS/bootstrap.bundle.min.js"></script>
+    <script src="JS/bootstrap.min.js"></script>
+    <script src="JS/storage.js"></script>
+    <script src="JS/power.js"></script>
+</body>
+</html>
