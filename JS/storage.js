@@ -42,6 +42,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 start.onclick = function(){
+  let param = document.getElementById("choose_param");
+  console.log(document.querySelector("#choose_param").getElementsByTagName('option')[3].value, Cams_bitrate)
+
+
   start1()
   // обработчик нажатия с указанием на функцию Старт
 }
@@ -68,6 +72,8 @@ let start1 =()=>{
 
     usli = Standart(Volume1.Volume1,capacity,discs);
     output(Volume.Volume,Volume.Volume1,Volume1.Volume, Volume1.Volume1,usli);
+    wats=power(usli);
+
   }  else {alert ("Please, select a mode.")};
     // Выдаёт сообщение об ошибке, если не выбран режим 
   return wats;
@@ -82,7 +88,9 @@ let MBR = (param, mBR) => {
     if(param.value =="Phones")
     {mBR = 0.1};
     if(param.value =="Cams")
-    {mBR = 8}
+    { mBR = Number(
+      Cams_bitrate
+    )}
     console.log("mBR:   ", mBR);
     return mBR;
 }
@@ -118,7 +126,7 @@ return {Volume:Volume, Volume1:Volume1};
 // Определение конвергентной системы
 
 let Standart = (Volume,capacity,discs)=>{
- if(!nestandart.checked){
+ if(!nestandart.checked && !konverg.checked){
 // alert(`i'm here1!`)
 // console.log("1",Volume);
 usli = Math.ceil(Volume/15/8);
@@ -127,7 +135,7 @@ console.log("Количество узлов с резервированием: 
 
  }else if(konverg.checked && !nestandart.checked){
   // alert(`i'm here2!`)
-  // console.log("2",Volume)
+// console.log("2",Volume)
 usli = Math.ceil(Volume/7/4);
 console.log("Количество узлов :   ",usli," шт");
 console.log("Количество узлов с резервированием:   ", usli+2," шт");
@@ -138,17 +146,16 @@ console.log("Количество узлов с резервированием: 
   console.log("Количество узлов :   ",usli," шт");
   console.log("Количество узлов с резервированием:   ", usli+2," шт");
  }
- power(usli);
  return usli;
 }
 // Расчёт количества узлов для каждой из систем
 
 let power = (usli)=>{
   if(konverg.checked){
-    wats = (usli)*1200;
+    wats = (usli+2)*1000;
     console.log(wats);
   } else {
-    wats = (usli)*700;
+    wats = (usli+2)*700;
     console.log(wats);
   }
   document.getElementById("power").value = wats

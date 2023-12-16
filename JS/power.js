@@ -2,10 +2,10 @@ let inp = document.querySelector("#inp");
 let start2 = document.getElementById("start2");
 
 start2.onclick = function(){
-    let voultage = document.getElementById("voultage").value;
-    let capacity2 = document.getElementById("capacity").value;
-    let battaries = document.getElementById("batteries").value;
-    let kpd = document.getElementById("kpd").value;
+    let voultage = +document.getElementById("voultage").value;
+    let capacity2 = +document.getElementById("capacity").value;
+    let battaries = +document.getElementById("batteries").value;
+    let kpd = +document.getElementById("kpd").value;
     let powerval = 0;
 
     options(powerval, voultage, capacity2, battaries, kpd);
@@ -20,7 +20,7 @@ let options = (powerval, voultage, capacity2, battaries, kpd)=>{
             `
     
     if(inp.checked){
-        powerval = document.getElementById("power").value;
+        powerval = +document.getElementById("power").value;
     let result = voultage*capacity2*battaries*kpd*0.85/powerval;
     console.log("Время работы устройства:   ", result, " ч");
     output2(result);
@@ -41,7 +41,7 @@ let options = (powerval, voultage, capacity2, battaries, kpd)=>{
 let output2 = (result)=>{
     cont2=document.getElementById("cont2")
     cont2.innerHTML+=`
-    <p>Время работы устройства от батарей: ${result} часов</p>
+    <p>Время работы устройства, ч.: ${result}</p>
     `
 }
 // Вывод результата
