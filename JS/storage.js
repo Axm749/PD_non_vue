@@ -88,9 +88,16 @@ let MBR = (param, mBR) => {
     if(param.value =="Phones")
     {mBR = 0.1};
     if(param.value =="Cams")
-    { mBR = Number(
-      Cams_bitrate
-    )}
+    { 
+      if (Cams_bitrate){
+        mBR = Number(
+        Cams_bitrate
+        ) }
+      else {
+        mBR = 8
+      }
+      
+     }
     console.log("mBR:   ", mBR);
     return mBR;
 }
