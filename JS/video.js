@@ -186,9 +186,11 @@ let start4 = document.getElementById("start4");
 let resetAnalog = document.getElementById("start5");
 let result4 = document.getElementById("result4")
 Cams_bitrate = 0;
+let forReversCountOfZones = 0
 let pixelsCount = 0
 start4.onclick = function (){
     let camBit = 0
+    forReversCountOfZones++
     result4.innerHTML =`
     <p> <strong> Вывод для аналогового расчёта видеонаблюдения </strong></p>
     `;
@@ -203,7 +205,7 @@ start4.onclick = function (){
     console.log('Аналог', camBit);
     localStorage.setItem('Cams_bitrate', camBit)
     result4.innerHTML +=`
-    <p>Битрейт при аналоговом расчёте видеонаблюдения: ${Number(camBit).toFixed(5)} </p>
+    <p>Битрейт при аналоговом расчёте видеонаблюдения: ${Number(camBit).toFixed(5)}; всего зон: ${forReversCountOfZones} </p>
     `;
 
 }
@@ -211,6 +213,7 @@ resetAnalog.onclick = function (){
     localStorage.setItem('Cams_bitrate', Number('0'))
     var camBit = localStorage.getItem('Cams_bitrate')
     pixelsCount = 0
+    forReversCountOfZones =0
     result4.innerHTML =`
     <p> <strong> Вывод для аналогового расчёта видеонаблюдения </strong></p>
     `;
