@@ -28,7 +28,6 @@ body{
     margin-top: 20px;
     width: 90%;
 }
-
 input::-webkit-inner-spin-button, input::-webkit-outer-spin-button{
 -webkit-appearance: none;
 }

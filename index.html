@@ -14,12 +14,12 @@
       <h2>СХД</h2>
             <div class="row">
                 <div class="col-md-4">
-                    <label for="users" class="form-label text-start">Количество устройств</label>
-                    <input type="number" class="form-control" id="users" value="" required>
+                    <label for="users" class="form-label text-start" >Количество устройств</label>
+                    <input type="number" class="form-control" id="users" value="197" required>
                 </div>
                 <div class="col-md-4 text-start">
                     <label for="days" class="form-label">Дни хранения</label>
-                     <input type="number" class="form-control" id="days" aria-describedby="inputGroupPrepend" required value="">
+                     <input type="number" class="form-control" id="days" aria-describedby="inputGroupPrepend" required value="30">
                 </div>
             </div>
             <div class="row">
@@ -72,10 +72,15 @@
               </div>
             </div>
           </div>
-         <div class="col-12 text-start mt-1">
+          <div class="row">
+         <div class="col-12 text-start mt-3">
            <input class="btn btn-outline-primary" type="button" id="start" value="Старт">
              </div>
+             <div class="col-12 text-start mt-3" data-bs-toggle="modal" data-bs-target="#video_show">
+              <input class="btn btn-outline-primary" type="button" id="settings" value="Расширенное видеонаблюдение">
+            </div>
          </div>
+        </div>
         <div class="container">
          <div id="result1" class="output">
           <p> <strong> Вывод для раздела системы хранения данных </strong></p>
@@ -88,19 +93,19 @@
       <div class="row g-3 needs-validation" novalidate>
         <div class="col-md-4">
           <label for="voultage" class="form-label">Напряжение аккумуляторных батарей (В)</label>
-          <input type="number" class="form-control" id="voultage"required>
+          <input type="number" class="form-control" id="voultage" value="220"required>
         </div>
         <div class="col-md-4">
           <label for="capacity" class="form-label">Емкость аккумуляторной батареи (А/ч)</label>
-          <input type="number" class="form-control" id="capacity" required>
+          <input type="number" class="form-control" id="capacity" value="40" required>
         </div>
         <div class="col-md-4">
           <label for="batteries" class="form-label">Кол-во аккумуляторных батарей в цепи (шт.)</label>
-          <input type="number" class="form-control" id="batteries" required>
+          <input type="number" class="form-control" id="batteries" value="4" required>
         </div>
         <div class="col-md-4">
-          <label for="kpd" class="form-label">КПД преобразователя в долях (0,8-1,0)</label>
-          <input type="number" class="form-control" id="kpd" required>
+          <label for="kpd" class="form-label">КПД преобразователя в долях (0,8 - 1,0)</label>
+          <input type="number" class="form-control" id="kpd" value="0.85" required>
         </div>
         <div class="col-md-4">
           <label for="power" class="form-label">Макс. суммарная мощность нагрузок (Вт)</label>
@@ -127,10 +132,15 @@
       </form>
 
 
-      <form class="row g-3 needs-validation"  novalidate>
-        <div class="container">
-         <h2>Видео</h2>
-               <div class="row">
+      <form class="row g-3 needs-validation modal fade" aria-hidden="true" novalidate id="video_show">
+        <div class="modal-dialog modal-xl">
+        <div class="container modal-content">
+          <div class="modal-header">
+         <h2 class="modal-title">Видео</h2>
+         
+        </div>
+        
+               <div class="row modal-body">
                    <div class="col-md-4">
                        <label for="PPM_zones" class="form-label text-start">Число зон PPM</label>
                        <input type="number" class="form-control" id="PPM_zones" value="2" required>
@@ -143,7 +153,7 @@
                     <label for="Cam_angle" class="form-label">Угол наклона камеры</label>
                      <input type="number" class="form-control" id="Cam_angle" aria-describedby="inputGroupPrepend" required value="60">
                    </div>
-               </div>
+      
                <div class="row">
                 <div class="col-md-4">
                     <label for="Vertical_Cam_Angle" class="form-label text-start">Вертикальный угол обзора объектива</label>
@@ -168,8 +178,6 @@
                      <input type="number" class="form-control" id="Resolution_Y" aria-describedby="inputGroupPrepend" required value="1080">
                 </div>
                </div>
-
-
 
                <div class="col-md-4">
                 <label 
@@ -203,16 +211,39 @@
               <input 
               class="btn btn-outline-primary mt-3" type="button" id="start3" value="Старт">
                 </div>
-            </div>
-           <div class="container">
+                <hr class="mt-5">
+                <br>
             <div id="result3" class="output">
-             <p> <strong> Вывод для раздела Видео </strong></p>
+             <p class=" text-start"> <strong> Вывод для раздела Видео </strong></p>
+        </div>
+        <hr>
+        
+              <div class="text-start">
+                <label for="plot" class="form-label">Плотность изображения</label>
+                 <input type="number" class="form-control" id="plot" aria-describedby="inputGroupPrepend" required value="">
+          </div>
+          <div class="text-start">
+            <label for="square" class="form-label">Покрываемая площадь</label>
+             <input type="number" class="form-control" id="square" aria-describedby="inputGroupPrepend" required value="">
+      </div>
+      <input 
+        class="btn btn-outline-primary mt-3" type="button" id="start4" value="добавить зону">
+      <input 
+        class="btn btn-outline-primary mt-3" type="button" id="start5" value="сбросить зоны">
+
             </div>
+          <hr>
+          <div class="output" id="result4">
+            <p><strong>Вывод для аналогового расчёта видеонаблюдения</strong></p>
+          </div>
+          <hr>
+          <p> для выхода, нажмите за пределами окна</p>
+        </div>
            </div>
+          </div>
        </form>
 
-
-
+    <script src="JS/bootstrap.min.js"></script>
     <script src="JS/storage.js"></script>
     <script src="JS/power.js"></script>
     <script src="JS/video.js"></script>

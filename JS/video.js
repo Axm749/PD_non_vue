@@ -1,9 +1,8 @@
 let inp2 = document.querySelector("#inp2");
 let Cams_bitrate = 0;
-
 let Button = document.getElementById("start3");
 let Result = document.getElementById("result3");
-
+let FPS = 30;
 Button.onclick = function(){
     // Очищаем старые результаты
     Result.innerHTML = `
@@ -71,11 +70,11 @@ Button.onclick = function(){
         Total += (Total_Resolution * d)
         console.log(Total)
         Result.innerHTML +=`
-        <p>PPM в зоне номер ${i} равняется ${PPM}, а пикселей в этой зоне ${(Total_Resolution * d).toFixed(0)}</p>
+        <p>PPM в зоне номер ${i} равняется: ${PPM} пикселей/м^2, а пикселей в этой зоне: ${(Total_Resolution * d).toFixed(0)}; покрываемая площадь: ${(S).toFixed(0)} м^2</p>
         `
     }
 
-    let FPS = 30;
+    
     let Codec = Number(Kodak.value);
 
     Bit_Rate = Number((Total * FPS * Codec).toFixed(5))
@@ -89,7 +88,6 @@ Button.onclick = function(){
     `
 
 }
-
 function degtoRad(degrees) {
     console.log(`We got: ${degrees} deegrees.`)
     return degrees * (Math.PI/180);
@@ -178,6 +176,49 @@ function PPM_from_S(Total_Resolution, d, S, i){
 
 
 
+
+
+
+
+
+
+let start4 = document.getElementById("start4");
+let resetAnalog = document.getElementById("start5");
+let result4 = document.getElementById("result4")
+Cams_bitrate = 0;
+let pixelsCount = 0
+start4.onclick = function (){
+    let camBit = 0
+    result4.innerHTML =`
+    <p> <strong> Вывод для аналогового расчёта видеонаблюдения </strong></p>
+    `;
+
+    
+    let plot = Number(document.getElementById("plot").value);
+    let square = Number(document.getElementById("square").value);
+    pixelsCount +=  plot*square
+    camBit = pixelsCount*FPS*document.querySelector("#kodak").value
+
+    camBit/=1048576
+    console.log('Аналог', camBit);
+    localStorage.setItem('Cams_bitrate', camBit)
+    result4.innerHTML +=`
+    <p>Битрейт при аналоговом расчёте видеонаблюдения: ${Number(camBit).toFixed(5)} </p>
+    `;
+
+}
+resetAnalog.onclick = function (){
+    localStorage.setItem('Cams_bitrate', Number('0'))
+    var camBit = localStorage.getItem('Cams_bitrate')
+    pixelsCount = 0
+    result4.innerHTML =`
+    <p> <strong> Вывод для аналогового расчёта видеонаблюдения </strong></p>
+    `;
+    console.log('Аналог', camBit);
+    result4.innerHTML +=`
+    <p>Битрейт при аналоговом расчёте видеонаблюдения: ${Number(localStorage.getItem('Cams_bitrate')).toFixed(5)} </p>
+    `;
+}
 inp2.addEventListener("change", function(){
     let Kodak = document.querySelector("#kodak");
     console.log("hi")

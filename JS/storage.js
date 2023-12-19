@@ -7,6 +7,7 @@ let usli=0;
 let power2 = document.getElementById("power");
 let stan = document.getElementById("stan");
 let mBR_ = document.getElementById("mBR_visible");
+let settings = document.getElementById("settings")
 
 let param = document.getElementById("choose_param");
 
@@ -17,6 +18,12 @@ param.addEventListener("change", function(){
     //показываем окно ввода битрейта для ручного ввода
   } else {
     mBR_.style.display = "none";
+  }
+
+  if (param.value == "Cams"){
+    settings.style.display = "block"
+  }else{
+    settings.style.display = "none"
   }
 })
 // Отображаем битрейт при ручном вводе
@@ -36,10 +43,10 @@ nestandart.addEventListener("change", ()=>{
 document.addEventListener('DOMContentLoaded', function() {
   mBR_.style.display = "none";
   stan.style.display = "none";
+  settings.style.display ="none";
   power2.disabled = true;
   //Предустановленные значения для окон
 }, false);
-
 
 start.onclick = function(){
   let param = document.getElementById("choose_param");
@@ -90,14 +97,15 @@ let MBR = (param, mBR) => {
     if(param.value =="Cams")
     { 
       if (Cams_bitrate){
-        mBR = Number(
-        Cams_bitrate
-        ) }
+        mBR = Number(Cams_bitrate) 
+      } 
       else {
         mBR = 8
       }
-      
+
      }
+    
+  
     console.log("mBR:   ", mBR);
     return mBR;
 }
